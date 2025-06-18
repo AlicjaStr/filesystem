@@ -1,19 +1,8 @@
-========================
-Assignment 3: Filesystem
-========================
-
-In this assignment you will implement your own driver for a new filesystem: SFS.
+My own driver for a new filesystem: SFS.
 This simple filesystem is loosely based on the FAT filesystem, and supports
 (sub)directories and files of arbitrary size. It does have some severe
 limitations, such as a maximum filesystem size of 8 MB, only a limited
 number of items per directory, and no metadata such as file permissions.
-
-Your task is to write a driver for this filesystem, so that files and
-directories can be navigated, read, created, removed and modified. Writing
-a filesystem directly on a disk partition would be too complicated for this
-assignment, and therefore your SFS filesystem is contained in an image. This
-image resides on your normal (host) filesystem, and the driver you write will
-read and write to this image as if it is a disk.
 
 Normally filesystem drivers are part of the operating system. However, for this
 assignment we will implement the driver in userspace, through a framework called
@@ -356,48 +345,6 @@ a constraint for this assignment, and you *are* allowed to read, for example,
 just 2 bytes from the middle of the block table on disk.
 
 
-The assignment and grading
-==========================
-
-This assignment is individual; you are not allowed to work in teams. Submissions
-should be made to the submission system before the deadline. Multiple
-submissions are encouraged to evaluate your submission on our system. Our system
-may differ from your local system (e.g., compiler version); points are only
-given for features that work on our system.
-
-Your grade will be 1 if you did not submit your work on time, has an invalid
-format, or has errors during compilation.
-
-If your submission is valid (on time, in correct format and compiles), your
-grade starts from 0, and the following tests determine your grade (in no
-particular order):
-
-- +1.0pt if you made a valid submission that compiles.
-- +0.5pt for implementing the ``readdir`` function that works on the root
-  directory.
-  **Required**
-- +1.5pt for implementing functionality to read files in the root directory.
-- +1.0pt for supporting subdirectories (for ``readdir`` and ``read``).
-- +1.0pt for implementing support for ``mkdir``.
-- +1.0pt for implementing support for ``rmdir``.
-- +1.0pt for implementing support for removing files through ``unlink``.
-- +1.0pt for implementing support creating (empty) files.
-- +1.5pt for implementing support for ``truncate`` to shrink and grow files.
-- +2.0pt for implementing support writing to files.
-- -1.0pt if ``gcc -Wall -Wextra`` reports warnings when compiling your code.
-
-If you do not implement an item marked with **Required** you cannot obtain any
-further points.
-
-The grade will be capped at 10, so you do not need to implement all features
-to get a top grade.
-
-To get an indication of the grade you might get, you can run the automated tests
-using the command ``make check``.
-
-**Note**: Your filesystem driver will be evaluated largely automatically. This
-means features only get a positive grade if they work perfectly, and there will
-be no half grade for "effort".
 
 
 Notes and hints
